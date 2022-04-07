@@ -3,3 +3,5 @@
 # Project exclude paths
 /front/node_modules/
 
+/back/.env
+/back/node_modules/
