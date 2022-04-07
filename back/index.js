@@ -7,10 +7,7 @@ import formRouter from "./router/FormRoute.js";
 const PORT = process.env.PORT || 6000
 const app = express()
 app.use(express.json())
-app.use(cors({
-    credentials: true,
-    origin: 'http://localhost:3000'
-}))
+app.use(cors())
 app.use('/api/form', formRouter)
 
 const start = async () => {

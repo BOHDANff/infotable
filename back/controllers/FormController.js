@@ -1,4 +1,5 @@
 import FormService from "../services/FormService.js";
+import {validationResult} from "express-validator";
 
 class FormController {
     async getAllForms(req, res) {
@@ -12,6 +13,10 @@ class FormController {
 
     async createForm(req, res) {
         try {
+            const validationErrors = validationResult(req)
+            if(!validationErrors.isEmpty()) {
+                return res.status(400).json({ errors: validationErrors.array() });
+            }
             const newForm = await FormService.create(req.body);
             res.json(newForm)
         } catch (e) {
