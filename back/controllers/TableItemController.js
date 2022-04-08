@@ -15,6 +15,7 @@ class TableItemController {
         try {
             const validationErrors = validationResult(req)
             if(!validationErrors.isEmpty()) {
+                console.log({ errors: validationErrors.array() })
                 return res.status(400).json({ errors: validationErrors.array() });
             }
             const newTableItem = await FormService.create(req.body);

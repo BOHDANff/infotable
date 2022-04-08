@@ -12,7 +12,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import FormControl from "@mui/material/FormControl";
 import {useDispatch} from "react-redux";
-import {createItem} from "../store/reducers/TableReducer";
+import {createItem} from "../store/actionCreators/TableActionCreator";
+
 
 function Form(props) {
     const schema = yup.object().shape({
@@ -52,7 +53,7 @@ function Form(props) {
         }
 
         console.log(item);
-        dispatch(createItem({...item}))
+        dispatch(createItem({item}))
         reset({
             name:'',
             phone:'',

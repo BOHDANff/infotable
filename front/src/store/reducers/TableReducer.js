@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-
+import {createItem} from "../actionCreators/TableActionCreator";
 
 const initialState = {
     table: [],
@@ -9,15 +9,15 @@ export const tableSlice = createSlice({
     name: 'table',
     initialState,
     reducers: {
-        deleteItem(state, action){
-            state.table = state.table.filter(el => el.id !== action.payload)
-        },
-        createItem(state, action){
+    },
+    extraReducers: {
+        [createItem.fulfilled]: (state, action) => {
             state.table.push(action.payload)
+        },
+        [createItem.rejected]: (state, action) => {
+            console.log(action.payload)
         },
     }
 })
-
-export const {deleteItem, createItem} = tableSlice.actions
 
 export default tableSlice.reducer
