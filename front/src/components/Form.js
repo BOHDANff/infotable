@@ -1,11 +1,10 @@
 import React from 'react';
 import * as yup from "yup";
-import {useForm, Controller} from "react-hook-form";
+import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
 import {MyForm} from "./UI/MyForm/MyForm";
 import {MyInput} from "./UI/MyInput";
 import {MyFormButton} from "./UI/MyFormButton";
-import {MyRadio} from "./UI/MyRadio";
 import FormLabel from "@mui/material/FormLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";

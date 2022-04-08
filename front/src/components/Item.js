@@ -1,8 +1,11 @@
 import React from 'react';
 import {Card, CardActions, CardContent, Typography} from "@mui/material";
 import Button from "@material-ui/core/Button";
+import {useDispatch} from "react-redux";
+import {deleteItem} from "../store/actionCreators/TableActionCreator";
 
 const Item = (props) => {
+    const dispatch = useDispatch();
     return (
         <Card sx={{minWidth: '100%'}} style={{marginBottom: "20px"}} variant="outlined">
             <CardContent>
@@ -26,7 +29,7 @@ const Item = (props) => {
                 }
             </CardContent>
             <CardActions>
-                <Button size="small" >Delete</Button>
+                <Button size="small" onClick={() => dispatch(deleteItem(props.id))}>Delete</Button>
             </CardActions>
         </Card>
     );
