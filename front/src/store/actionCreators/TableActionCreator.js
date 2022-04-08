@@ -9,7 +9,7 @@ export const createItem = createAsyncThunk(
             const response = await TableItemService.create(item)
             return response.data
         } catch (e) {
-            return rejectWithValue(e.response?.data?.message)
+            return rejectWithValue(e.response?.data)
         }
     }
 )
