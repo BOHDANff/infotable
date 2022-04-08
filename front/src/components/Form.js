@@ -11,6 +11,8 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import FormControl from "@mui/material/FormControl";
+import {useDispatch} from "react-redux";
+import {createItem} from "../store/reducers/TableReducer";
 
 function Form(props) {
     const schema = yup.object().shape({
@@ -28,8 +30,6 @@ function Form(props) {
             .max(120, 'Please enter your real age')
             .nullable(true)
             .transform((v) => (v === '' || Number.isNaN(v) ? null : v)),
-        gender: yup
-            .boolean(),
     });
     const {register, handleSubmit, formState:{errors}, reset, control} = useForm({
         mode: "onChange",
@@ -38,15 +38,26 @@ function Form(props) {
             gender: null,
         },
     })
+    const dispatch = useDispatch();
     const onSubmit = (item) => {
         if (!item.age) {
             delete item.age
         }
         if (item.gender === null) {
             delete item.gender
+        } else if (item.gender === 'true') {
+            item.gender = true
+        } else {
+            item.gender = false
         }
+
         console.log(item);
-        reset()
+        dispatch(createItem({...item}))
+        reset({
+            name:'',
+            phone:'',
+            age:''
+        })
     }
     return (
         <MyForm onSubmit={handleSubmit(onSubmit)}>
@@ -80,7 +91,7 @@ function Form(props) {
                     )
                 }}
                 />
-                </FormControl>
+            </FormControl>
             <MyInput
                 {...register('age')}
                 id="age"

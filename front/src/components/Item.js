@@ -3,7 +3,6 @@ import {Card, CardActions, CardContent, Typography} from "@mui/material";
 import Button from "@material-ui/core/Button";
 
 const Item = (props) => {
-    console.log(props.gender);
     return (
         <Card sx={{minWidth: '100%'}} style={{marginBottom: "20px"}} variant="outlined">
             <CardContent>
@@ -16,7 +15,7 @@ const Item = (props) => {
                 { props.gender === undefined ?
                     <></> :
                     <Typography variant="h6" component="div">
-                        Gender: {props.gender}
+                        Gender: {props.gender? 'Male' : 'Female'}
                     </Typography>
                 }
                 {!props.age?
