@@ -2,13 +2,13 @@ import express from "express"
 import 'dotenv/config'
 import cors from "cors"
 import mongoose from "mongoose";
-import formRouter from "./router/FormRoute.js";
+import TableItemRouter from "./router/TableItemRoute.js";
 
 const PORT = process.env.PORT || 6000
 const app = express()
 app.use(express.json())
 app.use(cors())
-app.use('/api/form', formRouter)
+app.use('/api/tableItem', TableItemRouter)
 
 const start = async () => {
     try {
