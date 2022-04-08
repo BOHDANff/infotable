@@ -16,7 +16,7 @@ export const createItem = createAsyncThunk(
 
 export const fetchItems = createAsyncThunk(
     'item/fetch',
-    async ( userId, {rejectWithValue}) => {
+    async ({rejectWithValue}) => {
         try {
             const response = await TableItemService.getAll()
             return response.data
